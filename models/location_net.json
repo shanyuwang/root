@@ -5,11 +5,13 @@
     {
       "MODEL": "TrainedModel",
       "spec": {
-        "name": "location_net",
-        "url": "https://s3.amazonaws.com/mmcommons-tutorial/models/RN101-5k500-0012.params",
-        "model_filename": "RN101-5k500-0012.params",
+        "name": "location_net_epoch_12",
         "mode": "M",
-        "additional_files": [
+        "algorithm": "location_net",
+        "arguments":{
+          "epoch":12
+        },
+        "files": [
           {
             "url": "https://s3.amazonaws.com/mmcommons-tutorial/models/RN101-5k500-symbol.json",
             "filename": "RN101-5k500-symbol.json"
@@ -17,6 +19,10 @@
           {
             "url": "https://raw.githubusercontent.com/multimedia-berkeley/tutorials/master/grids.txt",
             "filename": "grids.txt"
+          },
+          {
+            "url": "https://s3.amazonaws.com/mmcommons-tutorial/models/RN101-5k500-0012.params",
+            "filename": "RN101-5k500-0012.params"
           }
         ]
       },
