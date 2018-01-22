@@ -2,11 +2,12 @@
   "name": "Train LOPQ approximator on LFW dataset",
   "description": "Train LOPQ approximator on Labeled Faces in Wild dataset. This script expects a LFW dataset loaded with name LFW. Otherwise please modify it.",
   "process_type": "V",
-  "preconditions":[
-    {"condition_type":"EXISTS",
-      "model":"Video",
-      "selector":{
-        "name":"LFW"
+  "preconditions": [
+    {
+      "condition_type": "EXISTS",
+      "model": "Video",
+      "selector": {
+        "name": "LFW"
       }
     }
   ],
@@ -44,13 +45,15 @@
                   "map": [
                     {
                       "operation": "perform_index_approximation",
+                      "video_selector": {
+                        "name": "LFW"
+                      },
                       "arguments": {
                         "target": "index_entries",
-                        "approximator":"approximator_trained_on_lopq",
+                        "approximator": "approximator_trained_on_lopq",
                         "filters": {
                           "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
-                          "video__name": "LFW",
-                          "approximate":false
+                          "approximate": false
                         }
                       }
                     }
