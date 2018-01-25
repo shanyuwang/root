@@ -1,6 +1,6 @@
 {
   "name": "Import LFW and train LOPQ approximator on LFW dataset",
-  "description": "Train LOPQ approximator on Labeled Faces in Wild dataset. This imports LFW dataset with name LFW. Make sure there are no other datasets named LFW, otherwise please modify name below.",
+  "description": "Train two LOPQ approximators on Labeled Faces in Wild dataset. This script imports LFW dataset with name LFW. Make sure there are no other datasets named LFW, otherwise please modify name in the script.",
   "process_type": "V",
   "create": [
     {
