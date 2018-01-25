@@ -43,6 +43,12 @@
                         "m": "32",
                         "components": "128",
                         "v": "32",
+                        "lopq_train_opts": {
+                          "kmeans_coarse_iters": 10,
+                          "kmeans_local_iters": 20,
+                          "n_init": 10,
+                          "subquantizer_sample_ratio": 1.0
+                        },
                         "training_set_selector": {
                           "name": "LFW_facenet_indexes"
                         },
@@ -74,6 +80,12 @@
                         "m": "64",
                         "components": "128",
                         "v": "64",
+                        "lopq_train_opts": {
+                          "kmeans_coarse_iters": 10,
+                          "kmeans_local_iters": 20,
+                          "n_init": 10,
+                          "subquantizer_sample_ratio": 1.0
+                        },
                         "training_set_selector": {
                           "name": "LFW_facenet_indexes"
                         },
