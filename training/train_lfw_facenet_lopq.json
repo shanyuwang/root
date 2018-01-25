@@ -46,7 +46,7 @@
                         "training_set_selector": {
                           "name": "LFW_facenet_indexes"
                         },
-                        "name": "approximator_trained_on_lopq",
+                        "name": "approx_32_32",
                         "map": [
                           {
                             "operation": "perform_index_approximation",
@@ -55,7 +55,38 @@
                             },
                             "arguments": {
                               "target": "index_entries",
-                              "approximator": "approximator_trained_on_lopq",
+                              "approximator": "approx_32_32",
+                              "filters": {
+                                "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                                "approximate": false
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "operation": "perform_training",
+                      "arguments": {
+                        "trainer": "LOPQ",
+                        "sub": "256",
+                        "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                        "m": "64",
+                        "components": "128",
+                        "v": "64",
+                        "training_set_selector": {
+                          "name": "LFW_facenet_indexes"
+                        },
+                        "name": "approx_64_64",
+                        "map": [
+                          {
+                            "operation": "perform_index_approximation",
+                            "video_selector": {
+                              "name": "LFW"
+                            },
+                            "arguments": {
+                              "target": "index_entries",
+                              "approximator": "approx_64_64",
                               "filters": {
                                 "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
                                 "approximate": false
