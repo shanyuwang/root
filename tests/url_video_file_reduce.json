@@ -47,9 +47,20 @@
                       }
                     }
                   ],
-                  "reduce":{
-                    "arguments":{}
-                  }
+                  "reduce": [
+                    {
+                      "arguments": {
+                        "recursive" : false,
+                        "map": []
+                      }
+                    },
+                    {
+                      "arguments": {
+                        "recursive" : true,
+                        "map": []
+                      }
+                    }
+                  ]
                 }
               }
             ]
