@@ -11,7 +11,7 @@
           "operation": "perform_import",
           "video_id": "__pk__",
           "arguments": {
-            "path": "https://www.dropbox.com/s/hvblde37d90rks3/citest.mp4",
+            "path": "https://www.youtube.com/watch?v=-4E2-0sxVUM",
             "map": [
               {
                 "operation": "perform_video_segmentation",
@@ -25,6 +25,14 @@
                         "rescale": 0,
                         "map": [
                           {
+                            "operation": "perform_indexing",
+                            "arguments": {
+                              "index": "inception",
+                              "target": "frames",
+                              "filters": "__parent__"
+                            }
+                          },
+                          {
                             "operation": "perform_detection",
                             "arguments": {
                               "filters": "__parent__",
@@ -32,6 +40,7 @@
                               "map": [
                                 {
                                   "operation": "perform_indexing",
+                                  "task_group_name":"facenet_index",
                                   "arguments": {
                                     "index": "facenet",
                                     "target": "regions",
@@ -50,13 +59,20 @@
                   "reduce": [
                     {
                       "arguments": {
-                        "recursive" : false,
+                        "reduce_target":"all",
                         "map": []
                       }
                     },
                     {
                       "arguments": {
-                        "recursive" : true,
+                        "reduce_target":"root",
+                        "map": []
+                      }
+                    },
+                    {
+                      "arguments": {
+                        "reduce_target":"filter",
+                        "reduce_filter":[{"task_group_name":"facenet_index"}],
                         "map": []
                       }
                     }
