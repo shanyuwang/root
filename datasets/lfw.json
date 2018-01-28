@@ -6,7 +6,8 @@
     {
       "MODEL": "Video",
       "spec": {
-        "name": "LFW"
+        "name": "LFW",
+        "dataset":true
       },
       "tasks": [
         {
