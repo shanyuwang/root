@@ -40,8 +40,8 @@
                               "map": [
                                 {
                                   "operation": "perform_indexing",
-                                  "task_group_name":"facenet_index",
                                   "arguments": {
+                                    "task_group_name":"facenet_index",
                                     "index": "facenet",
                                     "target": "regions",
                                     "filters": {
