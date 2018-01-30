@@ -1,5 +1,6 @@
 {
   "process_type": "V",
+  "description": "Example of a map-reduce video processing job.",
   "create": [
     {
       "MODEL": "Video",
