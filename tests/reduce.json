@@ -72,7 +72,7 @@
                     {
                       "arguments": {
                         "reduce_target":"filter",
-                        "reduce_filter":[{"task_group_name":"facenet_index"}],
+                        "reduce_filter":["facenet_index"],
                         "map": []
                       }
                     }
