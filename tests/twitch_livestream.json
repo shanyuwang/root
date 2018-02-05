@@ -1,0 +1,53 @@
+{
+  "process_type": "V",
+  "create": [
+    {
+      "MODEL": "Video",
+      "spec": {
+        "name": "twitch_livestream",
+        "url":""
+      },
+      "tasks": [
+                {
+                "operation": "perform_stream_capture",
+                "arguments": {
+                  "segments_batch_size": 10,
+                  "max_time": 600,
+                  "map": [
+                    {
+                      "operation": "perform_video_decode",
+                      "arguments": {
+                        "rate": 30,
+                        "rescale": 0,
+                        "map": [
+                          {
+                            "operation": "perform_detection",
+                            "arguments": {
+                              "filters": "__parent__",
+                              "detector": "coco",
+                              "map": [
+                                {
+                                  "operation": "perform_indexing",
+                                  "arguments": {
+                                    "index": "inception",
+                                    "target": "regions",
+                                    "filters": {
+                                      "event_id": "__parent_event__",
+                                      "w__gte": 50,
+                                      "h__gte": 50
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+      ]
+    }
+  ]
+}
