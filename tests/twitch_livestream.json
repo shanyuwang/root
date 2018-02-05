@@ -1,5 +1,6 @@
 {
   "process_type": "V",
+  "description":"Process a livestream",
   "create": [
     {
       "MODEL": "Video",
@@ -9,6 +10,7 @@
       },
       "tasks": [
                 {
+                "video_id": "__pk__",
                 "operation": "perform_stream_capture",
                 "arguments": {
                   "segments_batch_size": 10,
