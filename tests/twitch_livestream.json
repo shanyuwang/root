@@ -1,42 +1,51 @@
 {
   "process_type": "V",
-  "description":"Process a livestream",
+  "description": "Process a live stream by downloading/segmenting it and launching map tasks on batches of segments.",
   "create": [
     {
       "MODEL": "Video",
       "spec": {
         "name": "twitch_livestream",
-        "url":""
+        "url": ""
       },
       "tasks": [
-                {
-                "video_id": "__pk__",
-                "operation": "perform_stream_capture",
+        {
+          "video_id": "__pk__",
+          "operation": "perform_stream_capture",
+          "arguments": {
+            "segments_batch_size": 10,
+            "max_time": 600,
+            "map": [
+              {
+                "operation": "perform_video_decode",
                 "arguments": {
-                  "segments_batch_size": 10,
-                  "max_time": 600,
+                  "rate": 5,
+                  "rescale": 0,
                   "map": [
                     {
-                      "operation": "perform_video_decode",
+                      "operation": "perform_detection",
                       "arguments": {
-                        "rate": 30,
-                        "rescale": 0,
+                        "filters": "__parent__",
+                        "detector": "coco",
                         "map": [
                           {
-                            "operation": "perform_detection",
+                            "operation": "perform_indexing",
                             "arguments": {
-                              "filters": "__parent__",
-                              "detector": "coco",
+                              "index": "inception",
+                              "target": "regions",
+                              "filters": {
+                                "event_id": "__parent_event__",
+                                "w__gte": 50,
+                                "h__gte": 50
+                              },
                               "map": [
                                 {
-                                  "operation": "perform_indexing",
+                                  "operation": "perform_index_approximation",
                                   "arguments": {
-                                    "index": "inception",
-                                    "target": "regions",
+                                    "target": "index_entries",
+                                    "approximator_shasum": "86689432ac09d86dd95d7d3ed57227d27eb09c81",
                                     "filters": {
-                                      "event_id": "__parent_event__",
-                                      "w__gte": 50,
-                                      "h__gte": 50
+                                      "event_id": "__parent_event__"
                                     }
                                   }
                                 }
@@ -45,10 +54,69 @@
                           }
                         ]
                       }
+                    },
+                    {
+                      "operation": "perform_analysis",
+                      "arguments": {
+                        "analyzer": "tagger",
+                        "target": "frames",
+                        "filters": "__parent__"
+                      }
+                    },
+                    {
+                      "operation": "perform_detection",
+                      "arguments": {
+                        "filters": "__parent__",
+                        "detector": "textbox",
+                        "target": "frames",
+                        "map": [
+                          {
+                            "operation": "perform_analysis",
+                            "arguments": {
+                              "analyzer": "crnn",
+                              "target": "regions",
+                              "filters": {
+                                "event_id": "__parent_event__"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "operation": "perform_indexing",
+                      "arguments": {
+                        "index": "inception",
+                        "target": "frames",
+                        "filters": "__parent__"
+                      }
+                    },
+                    {
+                      "operation": "perform_detection",
+                      "arguments": {
+                        "filters": "__parent__",
+                        "detector": "face",
+                        "map": [
+                          {
+                            "operation": "perform_indexing",
+                            "arguments": {
+                              "task_group_name": "facenet_index",
+                              "index": "facenet",
+                              "target": "regions",
+                              "filters": {
+                                "event_id": "__parent_event__"
+                              }
+                            }
+                          }
+                        ]
+                      }
                     }
                   ]
                 }
               }
+            ]
+          }
+        }
       ]
     }
   ]
