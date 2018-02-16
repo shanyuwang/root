@@ -7,14 +7,14 @@
       "MODEL": "Video",
       "spec": {
         "name": "LFW",
-        "dataset":true
+        "dataset":true,
+        "url": "https://www.dropbox.com/s/6nn84z4yzy47vuh/LFW.dva_export.zip"
       },
       "tasks": [
         {
           "operation": "perform_import",
           "video_id": "__pk__",
           "arguments": {
-            "path": "https://www.dropbox.com/s/6nn84z4yzy47vuh/LFW.dva_export.zip"
           }
         }
       ]

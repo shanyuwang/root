@@ -7,7 +7,7 @@
       "spec": {
         "name": "livestream",
         "stream": true,
-        "url": ""
+        "url": "ENTER_URL_TO_CAPTURE"
       },
       "tasks": [
         {

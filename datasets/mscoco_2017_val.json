@@ -7,6 +7,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "2017 MSCOCO validation set",
+        "url": "http://images.cocodataset.org/zips/val2017.zip",
         "dataset": true
       },
       "tasks": [
@@ -14,7 +15,6 @@
           "operation": "perform_import",
           "video_id": "__pk__",
           "arguments": {
-            "path": "http://images.cocodataset.org/zips/val2017.zip",
             "map": [
               {
                 "operation": "perform_dataset_extraction",

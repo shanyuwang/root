@@ -5,14 +5,14 @@
     {
       "MODEL": "Video",
       "spec": {
-        "name": "video_map_reduce"
+        "name": "video_map_reduce",
+        "url": "https://www.youtube.com/watch?v=z4UDNzXD3qA"
       },
       "tasks": [
         {
           "operation": "perform_import",
           "video_id": "__pk__",
           "arguments": {
-            "path": "https://www.youtube.com/watch?v=z4UDNzXD3qA",
             "map": [
               {
                 "operation": "perform_video_segmentation",
