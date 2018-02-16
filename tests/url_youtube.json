@@ -12,7 +12,6 @@
           "operation": "perform_import",
           "video_id": "__pk__",
           "arguments": {
-            "path": "https://www.youtube.com/watch?v=z4UDNzXD3qA",
             "map": [
               {
                 "operation": "perform_video_segmentation",

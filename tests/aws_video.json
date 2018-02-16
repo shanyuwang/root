@@ -4,14 +4,14 @@
     {
       "MODEL": "Video",
       "spec": {
-        "name": "aws_video"
+        "name": "aws_video",
+        "url": "s3://aub3temp/1.mp4"
       },
       "tasks": [
         {
           "operation": "perform_import",
           "video_id": "__pk__",
           "arguments": {
-            "path": "s3://aub3temp/1.mp4",
             "map": [
               {
                 "operation": "perform_video_segmentation",
