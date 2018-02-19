@@ -1,0 +1,15 @@
+language: python
+
+branches:
+  only:
+  - master
+
+python:
+  - "2.7"
+
+
+before_install:
+  - git clone https://github.com/AKSHAYUBHAT/DeepVideoAnalytics && cd DeepVideoAnalytics/client/ && python setup.py install
+
+script:
+  - python validate.py
