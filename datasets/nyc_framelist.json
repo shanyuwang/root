@@ -7,7 +7,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "NYC images",
-        "url": "https://www.dropbox.com/s/ok1rshef20ss161/framelist.gz",
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/nyc_framelist.gz",
         "dataset": "True"
       },
       "tasks": [

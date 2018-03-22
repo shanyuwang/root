@@ -115,19 +115,19 @@
                     {
                       "operation": "perform_region_import",
                       "arguments": {
-                        "path": "https://www.dropbox.com/s/1h0xwdtcvdme9xv/coco_train2017_keypoints_regions.gz"
+                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_train2017_keypoints_regions.gz"
                       }
                     },
                     {
                       "operation": "perform_region_import",
                       "arguments": {
-                        "path": "https://www.dropbox.com/s/l0zmpks22456zak/coco_train2017_captions_regions.gz"
+                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_train2017_captions_regions.gz"
                       }
                     },
                     {
                       "operation": "perform_region_import",
                       "arguments": {
-                        "path": "https://www.dropbox.com/s/yulyghbhrqhjdw2/coco_train2017_instances_regions.gz"
+                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_train2017_instances_regions.gz"
                       }
                     }                    
                   ]

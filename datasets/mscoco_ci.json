@@ -7,7 +7,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "MSCOCO_tiny_test",
-        "url": "https://www.dropbox.com/s/iwarqv21wm95ky2/coco_train2017_ci.zip",
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_train2017_ci.zip",
         "dataset": true
       },
       "tasks": [
@@ -23,7 +23,7 @@
                     {
                       "operation": "perform_region_import",
                       "arguments": {
-                        "path": "https://www.dropbox.com/s/0swl3rnjshydpdb/coco_ci_regions.json"
+                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_ci_regions.json"
                       }
                     }
                   ]
