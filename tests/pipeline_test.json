@@ -276,14 +276,14 @@
     {
       "MODEL": "Video",
       "spec": {
-        "name": "aws_export"
+        "name": "aws_export",
+        "url": "s3://visualdatanetwork/coco_sample.dva_export.zip"
       },
       "tasks": [
         {
           "operation": "perform_import",
           "video_id": "__pk__",
           "arguments": {
-            "path": "s3://visualdatanetwork/coco_sample.dva_export.zip"
           }
         }
       ]
