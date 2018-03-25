@@ -124,7 +124,14 @@
                     {
                       "arguments": {
                         "reduce_target": "all",
-                        "map": []
+                        "map": [
+                          {
+                            "operation": "perform_export",
+                            "arguments": {
+                              "video_selector":{"name":"video_map_reduce"}
+                            }
+                          }
+                        ]
                       }
                     },
                     {

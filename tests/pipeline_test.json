@@ -223,12 +223,14 @@
                           {
                             "operation": "perform_export",
                             "arguments": {
+                              "video_selector":{"name":"video_map_reduce"},
                               "path": "s3://aub3temp/export_test.zip"
                             }
                           },
                           {
                             "operation": "perform_export",
                             "arguments": {
+                              "video_selector":{"name":"video_map_reduce"},
                               "path": "do://vdn/export_test.zip"
                             }
                           }
