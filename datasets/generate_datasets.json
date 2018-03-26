@@ -112,7 +112,6 @@
                       }
                     }
                   ],
-                  "frames_batch_size": 500,
                   "reduce": [
                     {
                       "arguments": {
