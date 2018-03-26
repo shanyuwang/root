@@ -1,0 +1,142 @@
+{
+  "name": "Process and export Labeled Faces in Wild dataset",
+  "description": "Process and export Labeled Faces in Wild dataset",
+  "process_type": "V",
+  "create": [
+    {
+      "MODEL": "Video",
+      "spec": {
+        "name": "LFW",
+        "dataset": true,
+        "url": "https://www.dropbox.com/s/g8dv5yeh9bmflec/lfw_funneled.zip"
+      },
+      "tasks": [
+        {
+          "operation": "perform_import",
+          "video_id": "__pk__",
+          "arguments": {
+            "map": [
+              {
+                "operation": "perform_dataset_extraction",
+                "arguments": {
+                  "map": [
+                    {
+                      "operation": "perform_detection",
+                      "arguments": {
+                        "map": [
+                          {
+                            "operation": "perform_indexing",
+                            "arguments": {
+                              "map": [
+                                {
+                                  "operation": "perform_index_approximation",
+                                  "arguments": {
+                                    "target": "index_entries",
+                                    "filters": {
+                                      "event_id": "__parent_event__"
+                                    },
+                                    "approximator_shasum": "86689432ac09d86dd95d7d3ed57227d27eb09c81"
+                                  }
+                                }
+                              ],
+                              "target": "regions",
+                              "filters": {
+                                "event_id": "__parent_event__",
+                                "w__gte": 50,
+                                "h__gte": 50
+                              },
+                              "index": "inception"
+                            }
+                          }
+                        ],
+                        "detector": "coco",
+                        "task_group_name": "coco_detection",
+                        "filters": "__parent__"
+                      }
+                    },
+                    {
+                      "operation": "perform_analysis",
+                      "arguments": {
+                        "analyzer": "tagger",
+                        "task_group_name": "tagging",
+                        "target": "frames",
+                        "filters": "__parent__"
+                      }
+                    },
+                    {
+                      "operation": "perform_detection",
+                      "arguments": {
+                        "map": [
+                          {
+                            "operation": "perform_analysis",
+                            "arguments": {
+                              "analyzer": "crnn",
+                              "target": "regions",
+                              "filters": {
+                                "event_id": "__parent_event__"
+                              }
+                            }
+                          }
+                        ],
+                        "detector": "textbox",
+                        "target": "frames",
+                        "filters": "__parent__"
+                      }
+                    },
+                    {
+                      "operation": "perform_indexing",
+                      "arguments": {
+                        "index": "inception",
+                        "target": "frames",
+                        "filters": "__parent__"
+                      }
+                    },
+                    {
+                      "operation": "perform_detection",
+                      "arguments": {
+                        "map": [
+                          {
+                            "operation": "perform_indexing",
+                            "arguments": {
+                              "index": "facenet",
+                              "task_group_name": "facenet_index",
+                              "target": "regions",
+                              "filters": {
+                                "event_id": "__parent_event__"
+                              }
+                            }
+                          }
+                        ],
+                        "detector": "face",
+                        "filters": "__parent__"
+                      }
+                    }
+                  ],
+                  "frames_batch_size": 500
+                }
+              }
+            ],
+            "reduce": [
+              {
+                "arguments": {
+                  "map": [
+                    {
+                      "operation": "perform_export",
+                      "arguments": {
+                        "video_selector": {
+                          "name": "LFW"
+                        },
+                        "path": "do://vdn/datasets/LFW.dva_export.zip"
+                      }
+                    }
+                  ],
+                  "reduce_target": "all"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
