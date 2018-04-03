@@ -64,26 +64,6 @@
                       }
                     },
                     {
-                      "operation": "perform_detection",
-                      "arguments": {
-                        "map": [
-                          {
-                            "operation": "perform_analysis",
-                            "arguments": {
-                              "analyzer": "crnn",
-                              "target": "regions",
-                              "filters": {
-                                "event_id": "__parent_event__"
-                              }
-                            }
-                          }
-                        ],
-                        "detector": "textbox",
-                        "target": "frames",
-                        "filters": "__parent__"
-                      }
-                    },
-                    {
                       "operation": "perform_indexing",
                       "arguments": {
                         "index": "inception",
