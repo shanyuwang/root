@@ -19,7 +19,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "LFW",
-        "url": "https://www.dropbox.com/s/6nn84z4yzy47vuh/LFW.dva_export.zip",
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/LFW.dva_export.zip",
         "dataset":true
       },
       "tasks": [
