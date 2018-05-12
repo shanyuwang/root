@@ -2,14 +2,6 @@
   "create": [
     {
       "MODEL": "TrainedModel",
-      "tasks": [
-        {
-          "operation": "perform_model_import",
-          "arguments": {
-            "pk": "__pk__"
-          }
-        }
-      ],
       "spec": {
         "files": [
           {
@@ -22,8 +14,16 @@
         "name": "VGG conv layer indexer",
         "algorithm": "vgg",
         "mode": "T",
-        "model_type":"I",
-        "shasum":"52723231e796dd06fafd190957c8a3b5a69e009c"
+        "model_type": "I",
+        "shasum": "52723231e796dd06fafd190957c8a3b5a69e009c"
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_model_import",
+      "arguments": {
+        "pk": "__created__0"
       }
     }
   ],

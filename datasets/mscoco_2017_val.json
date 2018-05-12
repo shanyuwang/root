@@ -9,42 +9,42 @@
         "name": "2017 MSCOCO validation set",
         "url": "http://images.cocodataset.org/zips/val2017.zip",
         "dataset": true
-      },
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-            "map": [
-              {
-                "operation": "perform_dataset_extraction",
-                "arguments": {
-                  "map": [
-                    {
-                      "operation": "perform_region_import",
-                      "arguments": {
-                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_val2017_keypoints_regions.gz"
-                      }
-                    },
-                    {
-                      "operation": "perform_region_import",
-                      "arguments": {
-                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_val2017_instances_regions.gz"
-                      }
-                    },
-                    {
-                      "operation": "perform_region_import",
-                      "arguments": {
-                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_val2017_captions_regions.gz"
-                      }
-                    }                    
-                  ]
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_import",
+      "video_id": "__created__0",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_dataset_extraction",
+            "arguments": {
+              "map": [
+                {
+                  "operation": "perform_region_import",
+                  "arguments": {
+                    "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_val2017_keypoints_regions.gz"
+                  }
+                },
+                {
+                  "operation": "perform_region_import",
+                  "arguments": {
+                    "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_val2017_instances_regions.gz"
+                  }
+                },
+                {
+                  "operation": "perform_region_import",
+                  "arguments": {
+                    "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_val2017_captions_regions.gz"
+                  }
                 }
-              }
-            ]
+              ]
+            }
           }
-        }
-      ]
+        ]
+      }
     }
   ]
 }

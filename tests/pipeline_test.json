@@ -7,273 +7,17 @@
       "spec": {
         "name": "aws_dataset",
         "url": "s3://aub3temp/exampledataset.zip"
-      },
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-            "map": [
-              {
-                "operation": "perform_dataset_extraction",
-                "arguments": {
-                  "map": [
-                    {
-                      "operation": "perform_detection",
-                      "arguments": {
-                        "frames_batch_size": 500,
-                        "detector": "coco",
-                        "map": [
-                          {
-                            "operation": "perform_indexing",
-                            "arguments": {
-                              "index": "inception",
-                              "target": "regions",
-                              "filters": {
-                                "event_id": "__parent_event__",
-                                "w__gte": 50,
-                                "h__gte": 50
-                              }
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "MODEL": "Video",
       "spec": {
         "name": "aws_video",
         "url": "s3://aub3temp/1.mp4"
-      },
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-            "map": [
-              {
-                "operation": "perform_video_segmentation",
-                "arguments": {
-                  "map": [
-                    {
-                      "operation": "perform_video_decode",
-                      "arguments": {
-                        "segments_batch_size": 10,
-                        "rate": 30,
-                        "rescale": 0,
-                        "map": [
-                          {
-                            "operation": "perform_detection",
-                            "arguments": {
-                              "filters": "__parent__",
-                              "detector": "coco",
-                              "map": [
-                                {
-                                  "operation": "perform_indexing",
-                                  "arguments": {
-                                    "index": "inception",
-                                    "target": "regions",
-                                    "filters": {
-                                      "event_id": "__parent_event__",
-                                      "w__gte": 50,
-                                      "h__gte": 50
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      ]
+      }
     },
     {
       "MODEL": "Video",
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-            "map": [
-              {
-                "operation": "perform_video_segmentation",
-                "arguments": {
-                  "map": [
-                    {
-                      "operation": "perform_video_decode",
-                      "arguments": {
-                        "rescale": 0,
-                        "map": [
-                          {
-                            "operation": "perform_detection",
-                            "arguments": {
-                              "map": [
-                                {
-                                  "operation": "perform_indexing",
-                                  "arguments": {
-                                    "map": [
-                                      {
-                                        "operation": "perform_index_approximation",
-                                        "arguments": {
-                                          "target": "index_entries",
-                                          "filters": {
-                                            "event_id": "__parent_event__"
-                                          },
-                                          "approximator_shasum": "86689432ac09d86dd95d7d3ed57227d27eb09c81"
-                                        }
-                                      }
-                                    ],
-                                    "target": "regions",
-                                    "filters": {
-                                      "event_id": "__parent_event__",
-                                      "w__gte": 50,
-                                      "h__gte": 50
-                                    },
-                                    "index": "inception"
-                                  }
-                                }
-                              ],
-                              "detector": "coco",
-                              "task_group_name": "coco_detection",
-                              "filters": "__parent__"
-                            }
-                          },
-                          {
-                            "operation": "perform_analysis",
-                            "arguments": {
-                              "analyzer": "tagger",
-                              "task_group_name": "tagging",
-                              "target": "frames",
-                              "filters": "__parent__"
-                            }
-                          },
-                          {
-                            "operation": "perform_detection",
-                            "arguments": {
-                              "map": [
-                                {
-                                  "operation": "perform_analysis",
-                                  "arguments": {
-                                    "analyzer": "crnn",
-                                    "target": "regions",
-                                    "filters": {
-                                      "event_id": "__parent_event__"
-                                    }
-                                  }
-                                }
-                              ],
-                              "detector": "textbox",
-                              "target": "frames",
-                              "filters": "__parent__"
-                            }
-                          },
-                          {
-                            "operation": "perform_indexing",
-                            "arguments": {
-                              "index": "inception",
-                              "target": "frames",
-                              "filters": "__parent__"
-                            }
-                          },
-                          {
-                            "operation": "perform_detection",
-                            "arguments": {
-                              "map": [
-                                {
-                                  "operation": "perform_indexing",
-                                  "arguments": {
-                                    "index": "facenet",
-                                    "task_group_name": "facenet_index",
-                                    "target": "regions",
-                                    "filters": {
-                                      "event_id": "__parent_event__"
-                                    }
-                                  }
-                                }
-                              ],
-                              "detector": "face",
-                              "filters": "__parent__"
-                            }
-                          }
-                        ],
-                        "rate": 30,
-                        "segments_batch_size": 10
-                      }
-                    }
-                  ],
-                  "reduce": [
-                    {
-                      "arguments": {
-                        "map": [
-                          {
-                            "operation": "perform_export",
-                            "arguments": {
-                              "video_selector": {
-                                "name": "video_map_reduce"
-                              },
-                              "path": "s3://aub3temp/export_test.zip"
-                            }
-                          },
-                          {
-                            "operation": "perform_export",
-                            "arguments": {
-                              "video_selector": {
-                                "name": "video_map_reduce"
-                              },
-                              "path": "do://vdn/export_test.zip"
-                            }
-                          }
-                        ],
-                        "reduce_target": "all"
-                      }
-                    },
-                    {
-                      "arguments": {
-                        "map": [],
-                        "reduce_target": "root"
-                      }
-                    },
-                    {
-                      "arguments": {
-                        "map": [],
-                        "reduce_filter": [
-                          "facenet_index"
-                        ],
-                        "reduce_target": "filter"
-                      }
-                    },
-                    {
-                      "arguments": {
-                        "map": [],
-                        "reduce_filter": [
-                          "tagging",
-                          "coco_detection"
-                        ],
-                        "reduce_target": "filter"
-                      }
-                    }
-                  ]
-                }
-              }
-            ]
-          }
-        }
-      ],
       "spec": {
         "url": "https://www.youtube.com/watch?v=z4UDNzXD3qA",
         "name": "video_map_reduce"
@@ -284,112 +28,358 @@
       "spec": {
         "name": "aws_export",
         "url": "s3://visualdatanetwork/coco_sample.dva_export.zip"
-      },
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-          }
-        }
-      ]
+      }
     },
     {
       "MODEL": "Video",
       "spec": {
         "name": "url_export",
         "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_sample.dva_export.zip"
-      },
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-          }
-        }
-      ]
+      }
     },
     {
       "MODEL": "Video",
       "spec": {
         "name": "url_youtube",
         "url": "https://www.youtube.com/watch?v=z4UDNzXD3qA"
-      },
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-            "map": [
-              {
-                "operation": "perform_video_segmentation",
-                "arguments": {
-                  "map": [
-                    {
-                      "operation": "perform_video_decode",
-                      "arguments": {
-                        "segments_batch_size": 10,
-                        "rate": 30,
-                        "rescale": 0,
-                        "map": [
-                          {
-                            "operation": "perform_indexing",
-                            "arguments": {
-                              "index": "inception",
-                              "target": "frames",
-                              "filters": "__parent__"
-                            }
-                          },
-                          {
-                            "operation": "perform_detection",
-                            "arguments": {
-                              "filters": "__parent__",
-                              "detector": "coco",
-                              "map": [
-                                {
-                                  "operation": "perform_indexing",
-                                  "arguments": {
-                                    "index": "inception",
-                                    "target": "regions",
-                                    "filters": {
-                                      "event_id": "__parent_event__",
-                                      "w__gte": 50,
-                                      "h__gte": 50
-                                    }
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "operation": "perform_detection",
-                            "arguments": {
-                              "filters": "__parent__",
-                              "detector": "face",
-                              "map": [
-                                {
-                                  "operation": "perform_indexing",
-                                  "arguments": {
-                                    "index": "facenet",
-                                    "target": "regions",
-                                    "filters": {
-                                      "event_id": "__parent_event__"
-                                    }
-                                  }
-                                }
-                              ]
-                            }
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_import",
+      "video_id": "__created__0",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_dataset_extraction",
+            "arguments": {
+              "map": [
+                {
+                  "operation": "perform_detection",
+                  "arguments": {
+                    "frames_batch_size": 500,
+                    "detector": "coco",
+                    "map": [
+                      {
+                        "operation": "perform_indexing",
+                        "arguments": {
+                          "index": "inception",
+                          "target": "regions",
+                          "filters": {
+                            "event_id": "__parent_event__",
+                            "w__gte": 50,
+                            "h__gte": 50
                           }
-                        ]
+                        }
                       }
-                    }
-                  ]
+                    ]
+                  }
                 }
-              }
-            ]
+              ]
+            }
           }
-        }
-      ]
+        ]
+      }
+    },
+    {
+      "operation": "perform_import",
+      "video_id": "__created__1",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_video_segmentation",
+            "arguments": {
+              "map": [
+                {
+                  "operation": "perform_video_decode",
+                  "arguments": {
+                    "segments_batch_size": 10,
+                    "rate": 30,
+                    "rescale": 0,
+                    "map": [
+                      {
+                        "operation": "perform_detection",
+                        "arguments": {
+                          "filters": "__parent__",
+                          "detector": "coco",
+                          "map": [
+                            {
+                              "operation": "perform_indexing",
+                              "arguments": {
+                                "index": "inception",
+                                "target": "regions",
+                                "filters": {
+                                  "event_id": "__parent_event__",
+                                  "w__gte": 50,
+                                  "h__gte": 50
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "operation": "perform_import",
+      "video_id": "__created__2",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_video_segmentation",
+            "arguments": {
+              "map": [
+                {
+                  "operation": "perform_video_decode",
+                  "arguments": {
+                    "rescale": 0,
+                    "map": [
+                      {
+                        "operation": "perform_detection",
+                        "arguments": {
+                          "map": [
+                            {
+                              "operation": "perform_indexing",
+                              "arguments": {
+                                "map": [
+                                  {
+                                    "operation": "perform_index_approximation",
+                                    "arguments": {
+                                      "target": "index_entries",
+                                      "filters": {
+                                        "event_id": "__parent_event__"
+                                      },
+                                      "approximator_shasum": "86689432ac09d86dd95d7d3ed57227d27eb09c81"
+                                    }
+                                  }
+                                ],
+                                "target": "regions",
+                                "filters": {
+                                  "event_id": "__parent_event__",
+                                  "w__gte": 50,
+                                  "h__gte": 50
+                                },
+                                "index": "inception"
+                              }
+                            }
+                          ],
+                          "detector": "coco",
+                          "task_group_name": "coco_detection",
+                          "filters": "__parent__"
+                        }
+                      },
+                      {
+                        "operation": "perform_analysis",
+                        "arguments": {
+                          "analyzer": "tagger",
+                          "task_group_name": "tagging",
+                          "target": "frames",
+                          "filters": "__parent__"
+                        }
+                      },
+                      {
+                        "operation": "perform_detection",
+                        "arguments": {
+                          "map": [
+                            {
+                              "operation": "perform_analysis",
+                              "arguments": {
+                                "analyzer": "crnn",
+                                "target": "regions",
+                                "filters": {
+                                  "event_id": "__parent_event__"
+                                }
+                              }
+                            }
+                          ],
+                          "detector": "textbox",
+                          "target": "frames",
+                          "filters": "__parent__"
+                        }
+                      },
+                      {
+                        "operation": "perform_indexing",
+                        "arguments": {
+                          "index": "inception",
+                          "target": "frames",
+                          "filters": "__parent__"
+                        }
+                      },
+                      {
+                        "operation": "perform_detection",
+                        "arguments": {
+                          "map": [
+                            {
+                              "operation": "perform_indexing",
+                              "arguments": {
+                                "index": "facenet",
+                                "task_group_name": "facenet_index",
+                                "target": "regions",
+                                "filters": {
+                                  "event_id": "__parent_event__"
+                                }
+                              }
+                            }
+                          ],
+                          "detector": "face",
+                          "filters": "__parent__"
+                        }
+                      }
+                    ],
+                    "rate": 30,
+                    "segments_batch_size": 10
+                  }
+                }
+              ],
+              "reduce": [
+                {
+                  "arguments": {
+                    "map": [
+                      {
+                        "operation": "perform_export",
+                        "arguments": {
+                          "video_selector": {
+                            "name": "video_map_reduce"
+                          },
+                          "path": "s3://aub3temp/export_test.zip"
+                        }
+                      },
+                      {
+                        "operation": "perform_export",
+                        "arguments": {
+                          "video_selector": {
+                            "name": "video_map_reduce"
+                          },
+                          "path": "do://vdn/export_test.zip"
+                        }
+                      }
+                    ],
+                    "reduce_target": "all"
+                  }
+                },
+                {
+                  "arguments": {
+                    "map": [],
+                    "reduce_target": "root"
+                  }
+                },
+                {
+                  "arguments": {
+                    "map": [],
+                    "reduce_filter": [
+                      "facenet_index"
+                    ],
+                    "reduce_target": "filter"
+                  }
+                },
+                {
+                  "arguments": {
+                    "map": [],
+                    "reduce_filter": [
+                      "tagging",
+                      "coco_detection"
+                    ],
+                    "reduce_target": "filter"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "operation": "perform_import",
+      "video_id": "__created__3",
+      "arguments": {
+      }
+    },
+    {
+      "operation": "perform_import",
+      "video_id": "__created__4",
+      "arguments": {
+      }
+    },
+    {
+      "operation": "perform_import",
+      "video_id": "__created__5",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_video_segmentation",
+            "arguments": {
+              "map": [
+                {
+                  "operation": "perform_video_decode",
+                  "arguments": {
+                    "segments_batch_size": 10,
+                    "rate": 30,
+                    "rescale": 0,
+                    "map": [
+                      {
+                        "operation": "perform_indexing",
+                        "arguments": {
+                          "index": "inception",
+                          "target": "frames",
+                          "filters": "__parent__"
+                        }
+                      },
+                      {
+                        "operation": "perform_detection",
+                        "arguments": {
+                          "filters": "__parent__",
+                          "detector": "coco",
+                          "map": [
+                            {
+                              "operation": "perform_indexing",
+                              "arguments": {
+                                "index": "inception",
+                                "target": "regions",
+                                "filters": {
+                                  "event_id": "__parent_event__",
+                                  "w__gte": 50,
+                                  "h__gte": 50
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "operation": "perform_detection",
+                        "arguments": {
+                          "filters": "__parent__",
+                          "detector": "face",
+                          "map": [
+                            {
+                              "operation": "perform_indexing",
+                              "arguments": {
+                                "index": "facenet",
+                                "target": "regions",
+                                "filters": {
+                                  "event_id": "__parent_event__"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
     }
   ]
 }

@@ -9,19 +9,21 @@
         "mode": "T",
         "model_type": "D",
         "detector_type": "Y",
-        "files": [{
-          "url": "https://www.dropbox.com/s/ztsl59pxgzvd14k/1.dva_detector.zip",
-          "filename": "model.zip"
-        }]
-      },
-      "tasks": [
-        {
-          "operation": "perform_model_import",
-          "arguments": {
-            "pk": "__pk__"
+        "files": [
+          {
+            "url": "https://www.dropbox.com/s/ztsl59pxgzvd14k/1.dva_detector.zip",
+            "filename": "model.zip"
           }
-        }
-      ]
+        ]
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_model_import",
+      "arguments": {
+        "pk": "__created__0"
+      }
     }
   ]
 }

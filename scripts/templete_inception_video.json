@@ -1,7 +1,7 @@
 {
   "process_type": "V",
   "description":"Index frames using inception on a video",
-  "tasks": [
+  "map": [
           {
             "operation": "perform_indexing",
             "video_id":"__enter_video_id__",

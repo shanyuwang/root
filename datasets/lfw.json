@@ -1,5 +1,5 @@
 {
-  "name":"Labeled Faces in Wild",
+  "name": "Labeled Faces in Wild",
   "description": "Labeled Faces in Wild dataset",
   "process_type": "V",
   "create": [
@@ -7,17 +7,17 @@
       "MODEL": "Video",
       "spec": {
         "name": "LFW",
-        "dataset":true,
+        "dataset": true,
         "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/LFW.dva_export.zip"
-      },
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-          }
-        }
-      ]
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_import",
+      "video_id": "__created__0",
+      "arguments": {
+      }
     }
   ]
 }

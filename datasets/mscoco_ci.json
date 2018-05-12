@@ -9,30 +9,30 @@
         "name": "MSCOCO_tiny_test",
         "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_train2017_ci.zip",
         "dataset": true
-      },
-      "tasks": [
-        {
-          "operation": "perform_import",
-          "video_id": "__pk__",
-          "arguments": {
-            "map": [
-              {
-                "operation": "perform_dataset_extraction",
-                "arguments": {
-                  "map": [
-                    {
-                      "operation": "perform_region_import",
-                      "arguments": {
-                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_ci_regions.json"
-                      }
-                    }
-                  ]
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_import",
+      "video_id": "__created__0",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_dataset_extraction",
+            "arguments": {
+              "map": [
+                {
+                  "operation": "perform_region_import",
+                  "arguments": {
+                    "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_ci_regions.json"
+                  }
                 }
-              }
-            ]
+              ]
+            }
           }
-        }
-      ]
+        ]
+      }
     }
   ]
 }

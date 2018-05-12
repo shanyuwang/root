@@ -2,14 +2,6 @@
   "create": [
     {
       "MODEL": "TrainedModel",
-      "tasks": [
-        {
-          "operation": "perform_model_import",
-          "arguments": {
-            "pk": "__pk__"
-          }
-        }
-      ],
       "spec": {
         "files": [
           {
@@ -27,6 +19,14 @@
         "detector_type": "T",
         "mode": "T",
         "model_type": "D"
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_model_import",
+      "arguments": {
+        "pk": "__created__0"
       }
     }
   ],

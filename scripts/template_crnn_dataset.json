@@ -1,7 +1,7 @@
 {
   "process_type": "V",
   "description": "Perform text recognition on entire frames in a dataset",
-  "tasks": [
+  "map": [
           {
             "operation": "perform_analysis",
             "video_id":"__enter_video_id__",

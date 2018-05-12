@@ -1,7 +1,7 @@
 {
   "description":"Index frames using inception on a dataset",
   "process_type": "V",
-  "tasks": [
+  "map": [
           {
             "operation": "perform_indexing",
             "video_id":"__enter_video_id__",

@@ -8,8 +8,8 @@
         "name": "location_net_epoch_12",
         "mode": "M",
         "algorithm": "location_net",
-        "arguments":{
-          "epoch":12
+        "arguments": {
+          "epoch": 12
         },
         "files": [
           {
@@ -25,14 +25,16 @@
             "filename": "RN101-5k500-0012.params"
           }
         ]
-      },
-      "tasks": [{
-        "operation":"perform_model_import",
-        "arguments":{
-          "pk":"__pk__",
-          "model_type":"A"
-        }
-      }]
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_model_import",
+      "arguments": {
+        "pk": "__created__0",
+        "model_type": "A"
+      }
     }
   ]
 }

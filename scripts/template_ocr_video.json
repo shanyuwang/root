@@ -1,6 +1,6 @@
 {
   "description": "Perform OCR on a video",
-  "tasks": [
+  "map": [
     {
       "operation": "perform_detection",
       "video_id": "__enter_video_id_as_integer__",
