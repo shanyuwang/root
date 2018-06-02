@@ -1,6 +1,6 @@
 {
   "name": "Import LFW and train FAISS approximator on LFW dataset",
-  "description": "Train FAISS approximators on Labeled Faces in Wild dataset. This script imports LFW dataset with name LFW. Make sure there are no other datasets named LFW, otherwise please modify name in the script.",
+  "description": "Train FAISS approximator on Labeled Faces in Wild dataset. This script imports LFW dataset with name LFW. Make sure there are no other datasets named LFW, otherwise please modify name in the script.",
   "process_type": "V",
   "create": [
     {
@@ -42,11 +42,11 @@
                       "arguments": {
                         "trainer": "FAISS",
                         "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
-                        "index_factory": "PCA80,Flat",
+                        "index_factory": "IVF4096,Flat",
                         "training_set_selector": {
                           "name": "LFW_facenet_indexes"
                         },
-                        "name": "approx_32_32",
+                        "name": "IVF4096_Flat",
                         "map": [
                           {
                             "operation": "perform_index_approximation",
@@ -55,7 +55,7 @@
                             },
                             "arguments": {
                               "target": "index_entries",
-                              "approximator": "approx_32_32",
+                              "approximator": "IVF4096_Flat",
                               "filters": {
                                 "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
                                 "approximate": false
