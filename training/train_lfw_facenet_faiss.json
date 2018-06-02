@@ -1,0 +1,75 @@
+{
+  "name": "Import LFW and train FAISS approximator on LFW dataset",
+  "description": "Train FAISS approximators on Labeled Faces in Wild dataset. This script imports LFW dataset with name LFW. Make sure there are no other datasets named LFW, otherwise please modify name in the script.",
+  "process_type": "V",
+  "create": [
+    {
+      "MODEL": "TrainingSet",
+      "spec": {
+        "name": "LFW_facenet_indexes",
+        "training_task_type": "A",
+        "instance_type": "X",
+        "source_filters": {
+          "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+          "video__name": "LFW"
+        }
+      }
+    },
+    {
+      "MODEL": "Video",
+      "spec": {
+        "name": "LFW",
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/LFW.dva_export.zip",
+        "dataset":true
+      }
+    }
+  ],
+  "map": [
+        {
+          "operation": "perform_import",
+          "video_id": "__created__1",
+          "arguments": {
+            "map": [
+              {
+                "operation": "perform_training_set_creation",
+                "arguments": {
+                  "training_set_selector": {
+                    "name": "LFW_facenet_indexes"
+                  },
+                  "map": [
+                    {
+                      "operation": "perform_training",
+                      "arguments": {
+                        "trainer": "FAISS",
+                        "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                        "index_factory": "PCA80,Flat",
+                        "training_set_selector": {
+                          "name": "LFW_facenet_indexes"
+                        },
+                        "name": "approx_32_32",
+                        "map": [
+                          {
+                            "operation": "perform_index_approximation",
+                            "video_selector": {
+                              "name": "LFW"
+                            },
+                            "arguments": {
+                              "target": "index_entries",
+                              "approximator": "approx_32_32",
+                              "filters": {
+                                "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                                "approximate": false
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+}
