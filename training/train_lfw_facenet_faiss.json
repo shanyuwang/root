@@ -61,6 +61,20 @@
                                 "approximate": false
                               }
                             }
+                          },
+                          {
+                            "operation": "perform_index_approximation",
+                            "video_selector": {
+                              "name": "citest"
+                            },
+                            "arguments": {
+                              "target": "index_entries",
+                              "approximator": "IVF4096_Flat",
+                              "filters": {
+                                "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                                "approximate": false
+                              }
+                            }
                           }
                         ]
                       }
