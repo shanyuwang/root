@@ -129,7 +129,6 @@
   ],
   "reduce": [
     {
-      "operation": "perform_reduce",
       "arguments": {
         "reduce_target": "all",
         "map": [
