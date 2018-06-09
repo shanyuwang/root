@@ -1,0 +1,36 @@
+{
+  "create": [
+    {
+      "MODEL": "TrainedModel",
+      "spec": {
+        "files": [
+          {
+            "url": "https://nyc3.digitaloceanspaces.com/vdn/models/open_images/kitti/frozen_inference_graph.pb",
+            "filename": "frozen_inference_graph.pb"
+          }
+        ],
+        "arguments": {
+          "class_index_to_string": {
+            "1": "car",
+            "2": "pedestrian"
+          }
+        },
+        "name": "TF KITTI object detector",
+        "algorithm": "faster_rcnn_resnet101_kitti_2018_01_28",
+        "detector_type": "T",
+        "mode": "T",
+        "model_type": "D"
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_model_import",
+      "arguments": {
+        "pk": "__created__0"
+      }
+    }
+  ],
+  "description": "KITTI car and pedestrican detection model using object detection API",
+  "process_type": "V"
+}
