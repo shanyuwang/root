@@ -5,7 +5,7 @@
       "spec": {
         "files": [
           {
-            "url": "https://nyc3.digitaloceanspaces.com/vdn/models/open_images/kitti/frozen_inference_graph.pb",
+            "url": "https://nyc3.digitaloceanspaces.com/vdn/models/kitti/frozen_inference_graph.pb",
             "filename": "frozen_inference_graph.pb"
           }
         ],
