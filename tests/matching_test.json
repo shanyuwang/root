@@ -1,12 +1,20 @@
 {
   "process_type": "V",
-  "description": "Example of a map-reduce video processing job.",
+  "description": "Generating hyper region relations between video frame and detected coco objects and frames/objects from YFCC",
   "create": [
     {
       "MODEL": "Video",
       "spec": {
-        "name": "video_map_reduce",
+        "name": "anon_trailer",
         "url": "https://www.youtube.com/watch?v=RJOoYhQcQBI"
+      }
+    },
+    {
+      "MODEL": "Video",
+      "spec": {
+        "name": "NYC images",
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/nyc_framelist.gz",
+        "dataset": "True"
       }
     }
   ],
@@ -92,25 +100,74 @@
                     ]
                   }
                 }
-              ],
-              "reduce": [
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "operation": "perform_import",
+      "video_id": "__created__1",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_frame_download",
+            "arguments": {
+              "frames_batch_size": 100,
+              "map": [
                 {
+                  "operation": "perform_detection",
                   "arguments": {
-                    "reduce_target": "all",
+                    "filters": {
+                      "event_id": "__parent_event__"
+                    },
+                    "detector": "coco",
                     "map": [
                       {
-                        "operation": "perform_matching",
+                        "operation": "perform_indexing",
                         "arguments": {
-                          "video_selector": {
-                            "name": "video_map_reduce"
-                          },
-                          "indexer_shasum":"48b026cf77dfbd5d9841cca3ee550ef0ee5a0751"
+                          "index": "inception",
+                          "target": "regions",
+                          "filters": {
+                            "event_id": "__parent_event__",
+                            "w__gte": 50,
+                            "h__gte": 50
+                          }
                         }
                       }
                     ]
                   }
+                },
+                {
+                  "operation": "perform_indexing",
+                  "arguments": {
+                    "index": "inception",
+                    "filters": {
+                      "event_id": "__parent_event__"
+                    },
+                    "target": "frames"
+                  }
                 }
               ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "reduce": [
+    {
+      "arguments": {
+        "reduce_target": "all",
+        "map": [
+          {
+            "operation": "perform_matching",
+            "arguments": {
+              "video_selector": {
+                "name": "anon_trailer"
+              },
+              "indexer_shasum": "48b026cf77dfbd5d9841cca3ee550ef0ee5a0751"
             }
           }
         ]
