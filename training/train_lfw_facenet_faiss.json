@@ -105,10 +105,10 @@
                     "map": [
                       {
                         "operation": "perform_index_approximation",
-                        "video_selector": {
-                          "name": "LFW"
-                        },
                         "arguments": {
+                          "video_selector": {
+                            "name": "LFW"
+                          },
                           "target": "index_entries",
                           "approximator": "IVF4096_Flat",
                           "filters": {
@@ -134,10 +134,10 @@
         "map": [
           {
             "operation": "perform_index_approximation",
-            "video_selector": {
-              "name": "nyc_paris_flickrcc"
-            },
             "arguments": {
+              "video_selector": {
+                "name": "nyc_paris_flickrcc"
+              },
               "target": "index_entries",
               "approximator": "IVF4096_Flat",
               "filters": {
