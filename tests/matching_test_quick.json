@@ -1,0 +1,90 @@
+{
+  "process_type": "V",
+  "description": "Generating hyper region relations between video frame and detected coco objects and frames/objects from YFCC",
+  "create": [
+    {
+      "MODEL": "Video",
+      "spec": {
+        "name": "anon_trailer",
+        "url": "https://www.youtube.com/watch?v=RJOoYhQcQBI"
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_import",
+      "video_id": "__created__0",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_video_segmentation",
+            "arguments": {
+              "map": [
+                {
+                  "operation": "perform_video_decode",
+                  "arguments": {
+                    "segments_batch_size": 10,
+                    "rate": 30,
+                    "rescale": 0,
+                    "map": [
+                      {
+                        "operation": "perform_detection",
+                        "arguments": {
+                          "task_group_name": "coco_detection",
+                          "filters": "__parent__",
+                          "detector": "coco",
+                          "map": [
+                            {
+                              "operation": "perform_indexing",
+                              "arguments": {
+                                "index": "inception",
+                                "target": "regions",
+                                "filters": {
+                                  "event_id": "__parent_event__",
+                                  "w__gte": 50,
+                                  "h__gte": 50
+                                },
+                                "map": [
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "operation": "perform_indexing",
+                        "arguments": {
+                          "index": "inception",
+                          "target": "frames",
+                          "filters": "__parent__"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "reduce": [
+    {
+      "arguments": {
+        "reduce_target": "all",
+        "map": [
+          {
+            "operation": "perform_matching",
+            "arguments": {
+              "video_selector": {
+                "name": "anon_trailer"
+              },
+              "indexer_shasum": "48b026cf77dfbd5d9841cca3ee550ef0ee5a0751"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
