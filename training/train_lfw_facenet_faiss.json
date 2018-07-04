@@ -88,7 +88,7 @@
           {
             "operation": "perform_training_set_creation",
             "arguments": {
-              "training_set_selector": {
+              "trainingset_selector": {
                 "name": "LFW_facenet_indexes"
               },
               "map": [
@@ -98,7 +98,7 @@
                     "trainer": "FAISS",
                     "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
                     "index_factory": "IVF4096,Flat",
-                    "training_set_selector": {
+                    "trainingset_selector": {
                       "name": "LFW_facenet_indexes"
                     },
                     "name": "IVF4096_Flat",

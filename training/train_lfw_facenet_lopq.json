@@ -33,7 +33,7 @@
               {
                 "operation": "perform_training_set_creation",
                 "arguments": {
-                  "training_set_selector": {
+                  "trainingset_selector": {
                     "name": "LFW_facenet_indexes"
                   },
                   "map": [
@@ -52,7 +52,7 @@
                           "n_init": 10,
                           "subquantizer_sample_ratio": 1.0
                         },
-                        "training_set_selector": {
+                        "trainingset_selector": {
                           "name": "LFW_facenet_indexes"
                         },
                         "name": "approx_32_32",
@@ -89,7 +89,7 @@
                           "n_init": 10,
                           "subquantizer_sample_ratio": 1.0
                         },
-                        "training_set_selector": {
+                        "trainingset_selector": {
                           "name": "LFW_facenet_indexes"
                         },
                         "name": "approx_64_64",
