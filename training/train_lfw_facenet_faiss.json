@@ -145,6 +145,16 @@
                 "approximate": false
               }
             }
+          },
+          {
+            "operation": "perform_export",
+            "arguments": {
+              "trainedmodel_selector": {
+                "name": "IVF4096_Flat"
+              },
+              "path": "do://vdn/models/IVF4096_Flat_LFW.dva_export.zip",
+              "public": true
+            }
           }
         ]
       }
