@@ -1,0 +1,18 @@
+{
+  "process_type": "V",
+  "description": "Test task restarts",
+  "map": [
+    {
+      "operation":"perform_test",
+      "arguments":{"throw_error_until":5}
+    },
+    {
+      "operation":"perform_test",
+      "arguments":{"throw_error_until":1}
+    },
+    {
+      "operation":"perform_test",
+      "arguments":{"throw_error_until":3}
+    }
+  ]
+}
