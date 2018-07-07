@@ -4,15 +4,15 @@
   "map": [
     {
       "operation":"perform_test",
-      "arguments":{"throw_error_until":5}
+      "arguments":{"throw_error_until":5,"queue":"qextract"}
     },
     {
       "operation":"perform_test",
-      "arguments":{"throw_error_until":1}
+      "arguments":{"throw_error_until":1,"queue":"qglobal_model"}
     },
     {
       "operation":"perform_test",
-      "arguments":{"throw_error_until":3}
+      "arguments":{"throw_error_until":3,"queue":"qglobal_retriever"}
     }
   ]
 }
