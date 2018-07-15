@@ -32,12 +32,12 @@
                         "arguments": {
                           "task_group_name": "coco_detection",
                           "filters": "__parent__",
-                          "detector": "coco",
+                          "trainedmodel_selector":{"name":"coco"},
                           "map": [
                             {
                               "operation": "perform_indexing",
                               "arguments": {
-                                "index": "inception",
+                                "trainedmodel_selector":{"name":"inception"},
                                 "target": "regions",
                                 "filters": {
                                   "event_id": "__parent_event__",
@@ -54,7 +54,7 @@
                       {
                         "operation": "perform_indexing",
                         "arguments": {
-                          "index": "inception",
+                          "trainedmodel_selector":{"name":"inception"},
                           "target": "frames",
                           "filters": "__parent__"
                         }

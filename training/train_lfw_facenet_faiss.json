@@ -46,7 +46,7 @@
                 {
                   "operation": "perform_detection",
                   "arguments": {
-                    "detector": "face",
+                    "trainedmodel_selector":{"name":"face"},
                     "filters": {
                       "event_id": "__parent_event__"
                     },
@@ -54,7 +54,7 @@
                       {
                         "operation": "perform_indexing",
                         "arguments": {
-                          "index": "facenet",
+                          "trainedmodel_selector":{"name":"facenet"},
                           "target": "regions",
                           "filters": {
                             "event_id": "__parent_event__"
@@ -67,7 +67,7 @@
                 {
                   "operation": "perform_indexing",
                   "arguments": {
-                    "index": "inception",
+                    "trainedmodel_selector":{"name":"inception"},
                     "filters": {
                       "event_id": "__parent_event__"
                     },

@@ -7,7 +7,7 @@
             "video_id":"__enter_video_id__",
             "arguments": {
               "segments_batch_size": 5,
-              "index": "inception",
+              "trainedmodel_selector":{"name":"inception"},
               "target": "frames"
             }
       }

@@ -59,12 +59,12 @@
                   "operation": "perform_detection",
                   "arguments": {
                     "frames_batch_size": 500,
-                    "detector": "coco",
+                    "trainedmodel_selector":{"name":"coco"},
                     "map": [
                       {
                         "operation": "perform_indexing",
                         "arguments": {
-                          "index": "inception",
+                          "trainedmodel_selector":{"name":"inception"},
                           "target": "regions",
                           "filters": {
                             "event_id": "__parent_event__",
@@ -102,12 +102,12 @@
                         "operation": "perform_detection",
                         "arguments": {
                           "filters": "__parent__",
-                          "detector": "coco",
+                          "trainedmodel_selector":{"name":"coco"},
                           "map": [
                             {
                               "operation": "perform_indexing",
                               "arguments": {
-                                "index": "inception",
+                                "trainedmodel_selector":{"name":"inception"},
                                 "target": "regions",
                                 "filters": {
                                   "event_id": "__parent_event__",
@@ -157,7 +157,7 @@
                                       "filters": {
                                         "event_id": "__parent_event__"
                                       },
-                                      "approximator_shasum": "86689432ac09d86dd95d7d3ed57227d27eb09c81"
+                                      "trainedmodel_selector":{"shasum":"86689432ac09d86dd95d7d3ed57227d27eb09c81"}
                                     }
                                   }
                                 ],
@@ -167,11 +167,11 @@
                                   "w__gte": 50,
                                   "h__gte": 50
                                 },
-                                "index": "inception"
+                                "trainedmodel_selector":{"name":"inception"}
                               }
                             }
                           ],
-                          "detector": "coco",
+                          "trainedmodel_selector":{"name":"coco"},
                           "task_group_name": "coco_detection",
                           "filters": "__parent__"
                         }
@@ -179,7 +179,7 @@
                       {
                         "operation": "perform_analysis",
                         "arguments": {
-                          "analyzer": "tagger",
+                          "trainedmodel_selector":{"name":"tagger"},
                           "task_group_name": "tagging",
                           "target": "frames",
                           "filters": "__parent__"
@@ -192,7 +192,7 @@
                             {
                               "operation": "perform_analysis",
                               "arguments": {
-                                "analyzer": "crnn",
+                                "trainedmodel_selector":{"name":"crnn"},
                                 "target": "regions",
                                 "filters": {
                                   "event_id": "__parent_event__"
@@ -200,7 +200,7 @@
                               }
                             }
                           ],
-                          "detector": "textbox",
+                          "trainedmodel_selector":{"name":"textbox"},
                           "target": "frames",
                           "filters": "__parent__"
                         }
@@ -208,7 +208,7 @@
                       {
                         "operation": "perform_indexing",
                         "arguments": {
-                          "index": "inception",
+                          "trainedmodel_selector":{"name":"inception"},
                           "target": "frames",
                           "filters": "__parent__"
                         }
@@ -220,7 +220,7 @@
                             {
                               "operation": "perform_indexing",
                               "arguments": {
-                                "index": "facenet",
+                                "trainedmodel_selector":{"name":"facenet"},
                                 "task_group_name": "facenet_index",
                                 "target": "regions",
                                 "filters": {
@@ -229,7 +229,7 @@
                               }
                             }
                           ],
-                          "detector": "face",
+                          "trainedmodel_selector":{"name":"face"},
                           "filters": "__parent__"
                         }
                       }
@@ -327,7 +327,7 @@
                       {
                         "operation": "perform_indexing",
                         "arguments": {
-                          "index": "inception",
+                          "trainedmodel_selector":{"name":"inception"},
                           "target": "frames",
                           "filters": "__parent__"
                         }
@@ -336,12 +336,12 @@
                         "operation": "perform_detection",
                         "arguments": {
                           "filters": "__parent__",
-                          "detector": "coco",
+                          "trainedmodel_selector":{"name":"coco"},
                           "map": [
                             {
                               "operation": "perform_indexing",
                               "arguments": {
-                                "index": "inception",
+                                "trainedmodel_selector":{"name":"inception"},
                                 "target": "regions",
                                 "filters": {
                                   "event_id": "__parent_event__",
@@ -357,12 +357,12 @@
                         "operation": "perform_detection",
                         "arguments": {
                           "filters": "__parent__",
-                          "detector": "face",
+                          "trainedmodel_selector":{"name":"face"},
                           "map": [
                             {
                               "operation": "perform_indexing",
                               "arguments": {
-                                "index": "facenet",
+                                "trainedmodel_selector":{"name":"facenet"},
                                 "target": "regions",
                                 "filters": {
                                   "event_id": "__parent_event__"

@@ -6,13 +6,13 @@
       "video_id": "__enter_video_id_as_integer__",
       "arguments": {
         "segments_batch_size": 5,
-        "detector": "textbox",
+        "trainedmodel_selector":{"name":"textbox"},
         "target": "frames",
         "map": [
           {
             "operation": "perform_analysis",
             "arguments": {
-              "analyzer": "crnn",
+              "trainedmodel_selector":{"name":"crnn"},
               "target": "regions",
               "filters": {
                 "event_id": "__parent_event__"
