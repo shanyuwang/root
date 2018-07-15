@@ -110,7 +110,7 @@
                             "name": "LFW"
                           },
                           "target": "index_entries",
-                          "approximator": "IVF4096_Flat",
+                          "trainedmodel_selector":{"name": "IVF4096_Flat"},
                           "filters": {
                             "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
                             "approximate": false
@@ -139,7 +139,7 @@
                 "name": "nyc_paris_flickrcc"
               },
               "target": "index_entries",
-              "approximator": "IVF4096_Flat",
+              "trainedmodel_selector":{"name": "IVF4096_Flat"},
               "filters": {
                 "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
                 "approximate": false

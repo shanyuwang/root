@@ -64,7 +64,7 @@
                             },
                             "arguments": {
                               "target": "index_entries",
-                              "approximator": "approx_32_32",
+                              "trainedmodel_selector":{"name": "approx_32_32"},
                               "filters": {
                                 "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
                                 "approximate": false
@@ -101,7 +101,7 @@
                             },
                             "arguments": {
                               "target": "index_entries",
-                              "approximator": "approx_64_64",
+                              "trainedmodel_selector":{"name": "approx_64_64"},
                               "filters": {
                                 "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
                                 "approximate": false
