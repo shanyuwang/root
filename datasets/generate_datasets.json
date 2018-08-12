@@ -104,7 +104,7 @@
                           "video_selector": {
                             "name": "LFW"
                           },
-                          "path": "do://vdn/datasets/LFW.dva_export.zip",
+                          "path": "do://vdn/datasets/LFW.dva_export",
                           "public": true
                         }
                       }

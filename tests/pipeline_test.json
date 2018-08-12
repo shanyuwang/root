@@ -27,14 +27,14 @@
       "MODEL": "Video",
       "spec": {
         "name": "aws_export",
-        "url": "s3://visualdatanetwork/coco_sample.dva_export.zip"
+        "url": "s3://visualdatanetwork/coco_sample.dva_export"
       }
     },
     {
       "MODEL": "Video",
       "spec": {
         "name": "url_export",
-        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_sample.dva_export.zip"
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_sample.dva_export"
       }
     },
     {

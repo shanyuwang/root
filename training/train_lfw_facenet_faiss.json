@@ -19,7 +19,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "LFW",
-        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/LFW.dva_export.zip",
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/LFW.dva_export",
         "dataset": true
       }
     },
@@ -152,7 +152,7 @@
               "trainedmodel_selector": {
                 "name": "IVF4096_Flat"
               },
-              "path": "do://vdn/models/IVF4096_Flat_LFW.dva_export.zip",
+              "path": "do://vdn/models/IVF4096_Flat_LFW.dva_export",
               "public": true
             }
           }
