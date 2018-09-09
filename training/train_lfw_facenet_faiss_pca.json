@@ -1,0 +1,163 @@
+{
+  "name": "Import LFW and train FAISS approximator on LFW dataset",
+  "description": "Train FAISS approximator on Labeled Faces in Wild dataset. This script imports LFW dataset with name LFW. Make sure there are no other datasets named LFW, otherwise please modify name in the script.",
+  "process_type": "V",
+  "create": [
+    {
+      "MODEL": "TrainingSet",
+      "spec": {
+        "name": "LFW_facenet_indexes",
+        "training_task_type": "A",
+        "instance_type": "X",
+        "source_filters": {
+          "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+          "video__name": "LFW"
+        }
+      }
+    },
+    {
+      "MODEL": "Video",
+      "spec": {
+        "name": "LFW",
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/LFW.dva_export",
+        "dataset": true
+      }
+    },
+    {
+      "MODEL": "Video",
+      "spec": {
+        "name": "nyc_paris_flickrcc",
+        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/nyc_framelist.gz",
+        "dataset": "True"
+      }
+    }
+  ],
+  "map": [
+    {
+      "operation": "perform_import",
+      "video_id": "__created__2",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_frame_download",
+            "arguments": {
+              "frames_batch_size": 100,
+              "map": [
+                {
+                  "operation": "perform_detection",
+                  "arguments": {
+                    "trainedmodel_selector":{"name":"face"},
+                    "filters": {
+                      "event_id": "__parent_event__"
+                    },
+                    "map": [
+                      {
+                        "operation": "perform_indexing",
+                        "arguments": {
+                          "trainedmodel_selector":{"name":"facenet"},
+                          "target": "regions",
+                          "filters": {
+                            "event_id": "__parent_event__"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "operation": "perform_indexing",
+                  "arguments": {
+                    "trainedmodel_selector":{"name":"inception"},
+                    "filters": {
+                      "event_id": "__parent_event__"
+                    },
+                    "target": "frames"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "operation": "perform_import",
+      "video_id": "__created__1",
+      "arguments": {
+        "map": [
+          {
+            "operation": "perform_training_set_creation",
+            "arguments": {
+              "trainingset_selector": {
+                "name": "LFW_facenet_indexes"
+              },
+              "map": [
+                {
+                  "operation": "perform_training",
+                  "arguments": {
+                    "trainer": "FAISS",
+                    "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                    "index_factory": "PCAR128,IVF4096,SQ8",
+                    "trainingset_selector": {
+                      "name": "LFW_facenet_indexes"
+                    },
+                    "name": "PCAR128_IVF4096_SQ8",
+                    "map": [
+                      {
+                        "operation": "perform_index_approximation",
+                        "arguments": {
+                          "video_selector": {
+                            "name": "LFW"
+                          },
+                          "target": "index_entries",
+                          "trainedmodel_selector":{"name": "PCAR128_IVF4096_SQ8"},
+                          "filters": {
+                            "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                            "approximate": false
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "reduce": [
+    {
+      "arguments": {
+        "reduce_target": "all",
+        "map": [
+          {
+            "operation": "perform_index_approximation",
+            "arguments": {
+              "video_selector": {
+                "name": "nyc_paris_flickrcc"
+              },
+              "target": "index_entries",
+              "trainedmodel_selector":{"name": "PCAR128_IVF4096_SQ8"},
+              "filters": {
+                "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                "approximate": false
+              }
+            }
+          },
+          {
+            "operation": "perform_export",
+            "arguments": {
+              "trainedmodel_selector": {
+                "name": "PCAR128_IVF4096_SQ8"
+              },
+              "path": "do://vdn/models/PCAR128_IVF4096_SQ8_LFW.dva_export",
+              "public": true
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
