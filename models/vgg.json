@@ -5,7 +5,7 @@
       "spec": {
         "files": [
           {
-            "url": "https://www.dropbox.com/s/3yzonc9nzo9xanv/vgg.pb",
+            "url": "{RESOURCES_ROOT}/vgg.pb",
             "filename": "vgg.pb"
           }
         ],

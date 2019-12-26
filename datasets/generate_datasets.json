@@ -8,7 +8,7 @@
       "spec": {
         "name": "LFW",
         "dataset": true,
-        "url": "https://www.dropbox.com/s/g8dv5yeh9bmflec/lfw_funneled.zip"
+        "url": "{RESOURCES_ROOT}/lfw_funneled.zip"
       }
     }
   ],
@@ -104,7 +104,7 @@
                           "video_selector": {
                             "name": "LFW"
                           },
-                          "path": "do://vdn/datasets/LFW.dva_export",
+                          "path": "gs://dvaresources/LFW.dva_export",
                           "public": true
                         }
                       }

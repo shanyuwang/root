@@ -34,7 +34,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "url_export",
-        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_sample.dva_export"
+        "url": "{RESOURCES_ROOT}/coco_sample.dva_export"
       }
     },
     {

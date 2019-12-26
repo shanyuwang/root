@@ -5,7 +5,7 @@
       "spec": {
         "files": [
           {
-            "url": "https://www.dropbox.com/s/4ak5dimhybocaqr/face.pb",
+            "url": "{RESOURCES_ROOT}/face.pb",
             "filename": "face.pb"
           }
         ],

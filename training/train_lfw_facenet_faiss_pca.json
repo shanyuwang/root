@@ -19,7 +19,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "LFW",
-        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/LFW.dva_export",
+        "url": "{RESOURCES_ROOT}/LFW.dva_export",
         "dataset": true
       }
     },
@@ -27,7 +27,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "nyc_paris_flickrcc",
-        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/nyc_framelist.gz",
+        "url": "{RESOURCES_ROOT}/nyc_framelist.gz",
         "dataset": "True"
       }
     }

@@ -11,7 +11,7 @@
         "detector_type": "Y",
         "files": [
           {
-            "url": "https://www.dropbox.com/s/ztsl59pxgzvd14k/1.dva_detector.zip",
+            "url": "{RESOURCES_ROOT}/1.dva_detector.zip",
             "filename": "model.zip"
           }
         ]

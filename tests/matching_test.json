@@ -13,7 +13,7 @@
       "MODEL": "Video",
       "spec": {
         "name": "NYC images",
-        "url": "https://vdn.nyc3.digitaloceanspaces.com/datasets/nyc_framelist.gz",
+        "url": "{RESOURCES_ROOT}/nyc_framelist.gz",
         "dataset": "True"
       }
     }

@@ -117,19 +117,19 @@
                     {
                       "operation": "perform_region_import",
                       "arguments": {
-                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_train2017_keypoints_regions.gz"
+                        "path": "{RESOURCES_ROOT}/coco_train2017_keypoints_regions.gz"
                       }
                     },
                     {
                       "operation": "perform_region_import",
                       "arguments": {
-                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_train2017_captions_regions.gz"
+                        "path": "{RESOURCES_ROOT}/coco_train2017_captions_regions.gz"
                       }
                     },
                     {
                       "operation": "perform_region_import",
                       "arguments": {
-                        "path": "https://vdn.nyc3.digitaloceanspaces.com/datasets/coco_train2017_instances_regions.gz"
+                        "path": "{RESOURCES_ROOT}/coco_train2017_instances_regions.gz"
                       }
                     }
                   ]
