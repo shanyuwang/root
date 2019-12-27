@@ -258,7 +258,7 @@
                           "video_selector": {
                             "name": "video_map_reduce"
                           },
-                          "path": "do://vdn/export_test.zip"
+                          "path": "gs://dvaresources/export_test.zip"
                         }
                       }
                     ],

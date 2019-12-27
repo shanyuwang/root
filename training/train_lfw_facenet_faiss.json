@@ -152,8 +152,7 @@
               "trainedmodel_selector": {
                 "name": "IVF4096_Flat"
               },
-              "path": "do://vdn/models/IVF4096_Flat_LFW.dva_model_export",
-              "public": true
+              "path": "gs://dvaresources/IVF4096_Flat_LFW.dva_model_export",
             }
           }
         ]

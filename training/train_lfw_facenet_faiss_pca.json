@@ -152,7 +152,7 @@
               "trainedmodel_selector": {
                 "name": "PCAR128_IVF4096_SQ8"
               },
-              "path": "do://vdn/models/PCAR128_IVF4096_SQ8_LFW.dva_model_export",
+              "path": "gs://dvaresources/PCAR128_IVF4096_SQ8_LFW.dva_model_export",
               "public": true
             }
           }
