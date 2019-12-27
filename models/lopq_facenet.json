@@ -28,7 +28,7 @@
         "name": "Facenet_LOPQ_on_LFW",
         "algorithm": "LOPQ",
         "arguments": {
-          "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+          "indexer_shasum": "a351c818c7a955e9b014a31027cc7ec6cdf71cb6",
           "m": 32,
           "sub": 256,
           "components": 64,

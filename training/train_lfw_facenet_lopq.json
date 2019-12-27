@@ -10,7 +10,7 @@
         "training_task_type": "A",
         "instance_type": "X",
         "source_filters": {
-          "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+          "indexer_shasum": "a351c818c7a955e9b014a31027cc7ec6cdf71cb6",
           "video__name": "LFW"
         }
       }
@@ -42,7 +42,7 @@
                       "arguments": {
                         "trainer": "LOPQ",
                         "sub": "256",
-                        "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                        "indexer_shasum": "a351c818c7a955e9b014a31027cc7ec6cdf71cb6",
                         "m": "32",
                         "components": "128",
                         "v": "32",
@@ -66,7 +66,7 @@
                               "target": "index_entries",
                               "trainedmodel_selector":{"name": "approx_32_32"},
                               "filters": {
-                                "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                                "indexer_shasum": "a351c818c7a955e9b014a31027cc7ec6cdf71cb6",
                                 "approximate": false
                               }
                             }
@@ -79,7 +79,7 @@
                       "arguments": {
                         "trainer": "LOPQ",
                         "sub": "256",
-                        "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                        "indexer_shasum": "a351c818c7a955e9b014a31027cc7ec6cdf71cb6",
                         "m": "64",
                         "components": "128",
                         "v": "64",
@@ -103,7 +103,7 @@
                               "target": "index_entries",
                               "trainedmodel_selector":{"name": "approx_64_64"},
                               "filters": {
-                                "indexer_shasum": "9f99caccbc75dcee8cb0a55a0551d7c5cb8a6836",
+                                "indexer_shasum": "a351c818c7a955e9b014a31027cc7ec6cdf71cb6",
                                 "approximate": false
                               }
                             }
